@@ -1,0 +1,17 @@
+Package: easyJaspar
+Title: A simpler and easier way to obtain JASPAR's prediction results
+Version: 1.0.0.0
+Author: Beiping Hu
+Maintainer: Beiping Hu <hubeiping@njmu.edu.cn>
+BugReports: https://github.com/MyBitterGourd/easyJaspar/issues
+Description: Unified packaging of some functions for querying JASPAR prediction results.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    BSgenome.Hsapiens.UCSC.hg19,
+    dplyr,
+    GenomicFeatures,
+    JASPAR2024,
+    TFBSTools
