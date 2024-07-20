@@ -14,8 +14,8 @@
 #' @export
 #'
 #' @examples
-#'
-
+#' singleJasparPredict("rs12345", 1, 1234567, "A", "T", 500, "+", 0.5, TRUE)
+#' @export
 singleJasparPredict <- function(rsID, chr, position, ALT, REF, window, strand, threshold, plotLogo) {
 
   suppressMessages(library(GenomicFeatures))
