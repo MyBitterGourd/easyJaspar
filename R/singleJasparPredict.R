@@ -39,7 +39,7 @@ singleJasparPredict <- function(rsID, chr, position, ALT, REF, window, strand, t
     opts
   )
 
-  UPseq <- toString(getSeq(Hsapiens, paste0("chr", chr), start = position - window, end = 47340117 - 1))
+  UPseq <- toString(getSeq(Hsapiens, paste0("chr", chr), start = position - window, end = position - 1))
   DOWNseq <- toString(getSeq(Hsapiens, paste0("chr", chr), start = position + 1, end = position + window))
   ALTseq <- paste0(UPseq, ALT, DOWNseq)
   REFseq <- paste0(UPseq, REF, DOWNseq)
