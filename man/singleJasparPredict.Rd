@@ -13,7 +13,7 @@ singleJasparPredict(
   window,
   strand,
   threshold,
-  plotLogo
+  plotLogo = TRUE
 )
 }
 \arguments{
@@ -40,7 +40,4 @@ singleJasparPredict(
 }
 \description{
 single Jaspar Predict
-}
-\examples{
-singleJasparPredict(rsID = "rs1010167", chr = 1, position = 110198727, ALT = "G", REF = "C", window = 20, strand = "+", threshold = 0.8, plotLogo = T)
 }

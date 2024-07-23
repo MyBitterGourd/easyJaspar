@@ -12,10 +12,6 @@
 #'
 #' @return 等位基因差异结合的转录因子列表
 #' @export
-#'
-#' @examples
-#' singleJasparPredict(rsID = "rs1010167", chr = 1, position = 110198727, ALT = "G", REF = "C", window = 20, strand = "+", threshold = 0.8, plotLogo = T)
-#' @export
 singleJasparPredict <- function(rsID, chr, position, ALT, REF, window, strand, threshold, plotLogo = TRUE) {
 
   suppressMessages(library(GenomicFeatures))
