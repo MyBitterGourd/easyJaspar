@@ -15,3 +15,6 @@ Imports:
     GenomicFeatures,
     JASPAR2024,
     TFBSTools
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

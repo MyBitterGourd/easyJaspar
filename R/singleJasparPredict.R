@@ -1,4 +1,4 @@
-#' Title
+#' single Jaspar Predict
 #'
 #' @param rsID SNP的rs号
 #' @param chr SNP所在染色体号
@@ -10,35 +10,28 @@
 #' @param threshold JASPAR预测显著结合的阈值
 #' @param plotLogo 是否绘制转录因子Motif的LOGO图
 #'
-#' @return
+#' @return 等位基因差异结合的转录因子列表
 #' @export
 #'
 #' @examples
-#' singleJasparPredict("rs12345", 1, 1234567, "A", "T", 500, "+", 0.5, TRUE)
+#' singleJasparPredict(rsID = "rs1010167", chr = 1, position = 110198727, ALT = "G", REF = "C", window = 20, strand = "+", threshold = 0.8, plotLogo = T)
 #' @export
-singleJasparPredict <- function(rsID, chr, position, ALT, REF, window, strand, threshold, plotLogo) {
+singleJasparPredict <- function(rsID, chr, position, ALT, REF, window, strand, threshold, plotLogo = TRUE) {
 
   suppressMessages(library(GenomicFeatures))
   suppressMessages(library(BSgenome.Hsapiens.UCSC.hg19))
-  suppressMessages(library(JASPAR2024))
   suppressMessages(library(TFBSTools))
   suppressMessages(library(dplyr))
-
-  JASPAR2024 <- JASPAR2024()
-  opts <- list()
-  opts[["species"]] <- "Homo sapiens"
-  opts[["matrixtype"]] <- "PWM"
-  pwms <- getMatrixSet(
-    db(JASPAR2024),
-    opts
-  )
-
-  opts[["matrixtype"]] <- "ICM"
-  icms <- getMatrixSet(
-    db(JASPAR2024),
-    opts
-  )
-
+  
+  if ((!"icms"%in%ls(name = ".GlobalEnv")) | (!"pwms"%in%ls(name = ".GlobalEnv"))) {
+    print("Please run loadDatabase() first!")
+  }
+  
+  SNPseq <- toString(getSeq(Hsapiens, paste0("chr", chr), start = position, end = position))
+  if (SNPseq != REF) {
+    print("Please check reference allele and alternative allele!")
+  }
+    
   UPseq <- toString(getSeq(Hsapiens, paste0("chr", chr), start = position - window, end = position - 1))
   DOWNseq <- toString(getSeq(Hsapiens, paste0("chr", chr), start = position + 1, end = position + window))
   ALTseq <- paste0(UPseq, ALT, DOWNseq)

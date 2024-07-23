@@ -2,7 +2,7 @@
 % Please edit documentation in R/singleJasparPredict.R
 \name{singleJasparPredict}
 \alias{singleJasparPredict}
-\title{Title}
+\title{single Jaspar Predict}
 \usage{
 singleJasparPredict(
   rsID,
@@ -35,6 +35,12 @@ singleJasparPredict(
 
 \item{plotLogo}{是否绘制转录因子Motif的LOGO图}
 }
+\value{
+等位基因差异结合的转录因子列表
+}
 \description{
-Title
+single Jaspar Predict
+}
+\examples{
+singleJasparPredict(rsID = "rs1010167", chr = 1, position = 110198727, ALT = "G", REF = "C", window = 20, strand = "+", threshold = 0.8, plotLogo = T)
 }
